@@ -4,21 +4,21 @@
   </h2>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef> NOME </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="goal">
+    <ng-container matColumnDef="objetivo">
       <th mat-header-cell *matHeaderCellDef> OBJETIVO </th>
-      <td mat-cell *matCellDef="let element"> {{element.goal}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.objetivo}} </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="totalBalance">
+    <ng-container matColumnDef="saldoTotal">
       <th mat-header-cell *matHeaderCellDef> SALDO TOTAL </th>
-      <td mat-cell *matCellDef="let element"> {{element.totalBalance}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.saldoTotal}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
