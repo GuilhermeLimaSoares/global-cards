@@ -8,6 +8,8 @@ import { CustomRansomComponent } from './src/pages/custom-ransom/custom-ransom.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import { InvestmentsService } from './src/services/investments.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [InvestmentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

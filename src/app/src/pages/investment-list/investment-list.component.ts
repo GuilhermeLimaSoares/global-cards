@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { InvestmentsService } from '../../services/investments.service';
 
 export interface PeriodicElement {
   name: string;
@@ -25,7 +26,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./investment-list.component.scss'],
 })
 
-export class InvestmentListComponent {
+export class InvestmentListComponent implements OnInit{
   displayedColumns: string[] = ['name', 'goal', 'totalBalance', ];
   dataSource = ELEMENT_DATA;
+
+  constructor(private service: InvestmentsService) {}
+
+  ngOnInit(): void {
+    this.service.listInvestments().subscribe((data) => {
+      console.log('data investment:', data);
+    })
+  }
 }
