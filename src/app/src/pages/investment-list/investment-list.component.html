@@ -3,25 +3,25 @@
     INVESTIMENTOS
   </h2>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Name Column -->
+    <!-- Nome Column -->
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef> NOME </th>
       <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Objetivo Column -->
     <ng-container matColumnDef="objetivo">
       <th mat-header-cell *matHeaderCellDef> OBJETIVO </th>
       <td mat-cell *matCellDef="let element"> {{element.objetivo}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Saldo Total Column -->
     <ng-container matColumnDef="saldoTotal">
       <th mat-header-cell *matHeaderCellDef> SALDO TOTAL </th>
       <td mat-cell *matCellDef="let element"> {{element.saldoTotal}} </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" aria-disabled="true"></tr>
   </table>
 </div>
