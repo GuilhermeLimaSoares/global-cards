@@ -11,6 +11,7 @@ import {MatTableModule} from '@angular/material/table';
 import { InvestmentsService } from './src/services/investments.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { investmentReducer } from './src/store/reducers/investmentReducer';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { StoreModule } from '@ngrx/store';
     MatCardModule,
     MatTableModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({
+      investment: investmentReducer
+      })
   ],
   providers: [InvestmentsService],
   bootstrap: [AppComponent]

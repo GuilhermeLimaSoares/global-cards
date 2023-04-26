@@ -6,4 +6,5 @@ export interface InvestmentList {
   nome: string;
   objetivo: string;
   saldoTotal: number;
+  type?: string;
 }
