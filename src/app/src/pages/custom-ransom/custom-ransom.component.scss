@@ -1,0 +1,43 @@
+.custom-ransom {
+  .investment-date {
+    .investment-date__title {
+      font-weight: 400;
+    }
+
+    &__info__text {
+      display: flex;
+      width: 100%;
+    }
+
+    &-content {
+      display: flex;
+      row-gap: 10px;
+      flex-direction: column;
+
+    }
+  }
+
+  .ransom {
+    &__title {
+      font-weight: 400;
+    }
+    &__table {
+      width: 100%;
+      &__title {
+        text-align: left;
+      }
+    }
+  }
+}
+
+
+.mensagem__erro {
+  font-size: 12px;
+  margin-left: 5px;
+  color: red;
+  // margin-bottom: 20px;
+}
+
+.input-full-width{
+  width: 100%;
+}

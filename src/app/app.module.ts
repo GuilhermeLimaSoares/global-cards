@@ -8,10 +8,13 @@ import { CustomRansomComponent } from './src/pages/custom-ransom/custom-ransom.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatInputModule} from '@angular/material/input';
 import { InvestmentsService } from './src/services/investments.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { investmentReducer } from './src/store/reducers/investmentReducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { investmentReducer } from './src/store/reducers/investmentReducer';
     BrowserAnimationsModule,
     MatCardModule,
     MatTableModule,
+    MatInputModule,
+    MatGridListModule,
     HttpClientModule,
+    ReactiveFormsModule, //formularios reativos,
     StoreModule.forRoot({
       investment: investmentReducer
       })

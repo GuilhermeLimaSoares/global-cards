@@ -21,7 +21,7 @@
       <td mat-cell *matCellDef="let element"> {{element.saldoTotal}} </td>
     </ng-container>
 
-    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> -->
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" aria-disabled="true"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>

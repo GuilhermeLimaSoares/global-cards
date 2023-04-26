@@ -1,8 +1,61 @@
-<p>custom-ransom works!</p>
+<div class="custom-ransom">
+  <div class="investment-date">
+    <h2 class="investment-date__title">DADOS DO INVESTIMENTOS</h2>
+    <div class="investment-date-content">
+      <mat-card>
+        <mat-card-content>
+          <mat-grid-list cols="3" rowHeight="25px">
+            <mat-grid-tile class="investment-date__info">
+              <span class="investment-date__info__text">{{
+                initialState.nome
+              }}</span>
+            </mat-grid-tile>
+            <mat-grid-tile class="investment-date__info">
+              <span class="investment-date__info__text">{{
+                initialState.objetivo
+              }}</span>
+            </mat-grid-tile>
+            <mat-grid-tile class="investment-date__info">
+              <span class="investment-date__info__text">{{
+                initialState.saldoTotal
+              }}</span>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
 
-<!-- <div>Current currentinvestment: {{ currentinvestment$ | async }}</div>
-
-<button (click)="decrement()">Decrement</button> -->
-
-<div>Current currentinvestment: {{ initialState?.nome }}</div>
-
+    <div class="ransom">
+      <h2 class="ransom__title">RESGATE</h2>
+      <mat-card class="ransom-content" [formGroup]="form">
+        <mat-card-content>
+          <table class="ransom__table">
+            <tr>
+              <th
+                *ngFor="let title of displayedColumns"
+                class="ransom__table__title"
+              >
+                {{ title }}
+              </th>
+            </tr>
+            <tr *ngFor="let row of dataTable; let i = index">
+              <td>{{ row?.nome }}</td>
+              <td>{{ row?.percentual }}</td>
+              <td>
+                <input
+                  type="number"
+                  [formControlName]="i"
+                  placeholder="Digite quanto quer resgatar"
+                />
+                <div class="mensagem__erro" *ngIf="form.controls[i]?.value > row.percentual">
+                  O valor a resgatar não pode ser maior que R$
+                  {{ row?.percentual }}
+                </div>
+              </td>
+            </tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
