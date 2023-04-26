@@ -25,37 +25,52 @@
       </mat-card>
     </div>
 
-    <div class="ransom">
+    <div class="ransom" [formGroup]="form">
       <h2 class="ransom__title">RESGATE</h2>
-      <mat-card class="ransom-content" [formGroup]="form">
-        <mat-card-content>
-          <table class="ransom__table">
-            <tr>
-              <th
-                *ngFor="let title of displayedColumns"
-                class="ransom__table__title"
-              >
-                {{ title }}
-              </th>
-            </tr>
-            <tr *ngFor="let row of dataTable; let i = index">
-              <td>{{ row?.nome }}</td>
-              <td>{{ row?.percentual }}</td>
-              <td>
-                <input
-                  type="number"
-                  [formControlName]="i"
-                  placeholder="Digite quanto quer resgatar"
-                />
-                <div class="mensagem__erro" *ngIf="form.controls[i]?.value > row.percentual">
-                  O valor a resgatar não pode ser maior que R$
-                  {{ row?.percentual }}
-                </div>
-              </td>
-            </tr>
-          </table>
-        </mat-card-content>
-      </mat-card>
+      <div class="ransom__group">
+        <mat-card class="ransom-content">
+          <mat-card-content>
+            <table class="ransom__table">
+              <tr>
+                <th
+                  *ngFor="let title of displayedColumns"
+                  class="ransom__table__title"
+                >
+                  {{ title }}
+                </th>
+              </tr>
+              <tr *ngFor="let row of dataTable; let i = index">
+                <td>{{ row?.nome }}</td>
+                <td>{{ row?.percentual }}</td>
+                <td>
+                  <input
+                    type="number"
+                    [formControlName]="i"
+                    placeholder="Digite quanto quer resgatar"
+                  />
+                  <div
+                    class="mensagem__erro"
+                    *ngIf="form.controls[i]?.value > row.percentual"
+                  >
+                    O valor a resgatar não pode ser maior que R$
+                    {{ row?.percentual }}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="total-ransom">
+          <mat-card-content>
+            <span><b>Valor total do resgate:</b> R$ 15.000,00</span>
+          </mat-card-content>
+        </mat-card>
+
+        <div class="btn-group">
+          <button class="btn btn--cancel">CANCELAR</button>
+          <button class="btn btn--confirm"> CONFIRMAR RESGATE</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

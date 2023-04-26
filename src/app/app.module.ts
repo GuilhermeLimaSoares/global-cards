@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import { InvestmentsService } from './src/services/investments.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
@@ -30,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatInputModule,
     MatGridListModule,
+    MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule, //formularios reativos,
     StoreModule.forRoot({
