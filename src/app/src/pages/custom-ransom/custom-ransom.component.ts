@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { Actions } from '../../models/actions';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from './dialog.component';
+import { DialogComponent } from '../../components/dialog/dialog.component';
 
 const ELEMENT_DATA: Actions[] = [
   {
