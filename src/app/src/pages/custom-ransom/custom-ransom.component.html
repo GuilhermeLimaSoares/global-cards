@@ -1,0 +1,105 @@
+<div class="custom-ransom">
+  <div class="investment-date">
+    <h2 class="investment-date__title">DADOS DO INVESTIMENTOS</h2>
+    <div class="investment-date-content">
+      <mat-card>
+        <mat-card-content>
+          <mat-grid-list cols="3" rowHeight="25px">
+            <mat-grid-tile class="investment-date__info">
+              <span class="investment-date__info__text">{{
+                initialState.nome
+              }}</span>
+            </mat-grid-tile>
+            <mat-grid-tile class="investment-date__info">
+              <span class="investment-date__info__text">{{
+                initialState.objetivo
+              }}</span>
+            </mat-grid-tile>
+            <mat-grid-tile class="investment-date__info">
+              <span class="investment-date__info__text">{{
+                initialState.saldoTotal | currency : "BRL"
+              }}</span>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="ransom" [formGroup]="form">
+      <h2 class="ransom__title">RESGATE</h2>
+      <div class="ransom__group">
+        <mat-card class="ransom-content">
+          <mat-card-content>
+            <table class="ransom__table">
+              <tr>
+                <th
+                  *ngFor="let title of displayedColumns"
+                  class="ransom__table__title"
+                >
+                  {{ title }}
+                </th>
+              </tr>
+              <tr *ngFor="let row of dataTable; let i = index">
+                <td>{{ row?.nome }}</td>
+                <td>
+                  {{
+                    calculePercentual(row.percentual, initialState.saldoTotal)
+                      | currency : "BRL"
+                  }}
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    [formControlName]="i"
+                    placeholder="Digite quanto quer resgatar"
+                    (keyup)="
+                      setInvalidField(
+                        form.controls[i]?.value <
+                          calculePercentual(
+                            row.percentual,
+                            initialState.saldoTotal
+                          ),
+                        i
+                      );
+                      updateBalanceList(form.controls[i]?.value, i)
+                    "
+                  />
+                  <div
+                    class="mensagem__erro"
+                    *ngIf="
+                      form.controls[i]?.value >
+                      calculePercentual(row.percentual, initialState.saldoTotal)
+                    "
+                  >
+                    O valor a resgatar não pode ser maior que R$
+                    {{
+                      calculePercentual(row.percentual, initialState.saldoTotal)
+                        | currency : "BRL"
+                    }}
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="total-ransom">
+          <mat-card-content>
+            <span
+              ><b>Valor total do resgate:</b>
+              {{ totalBalance | currency : "BRL" }}</span
+            >
+          </mat-card-content>
+        </mat-card>
+
+        <div class="btn-group">
+          <button class="btn btn--cancel" (click)="closeDialog()">
+            CANCELAR
+          </button>
+          <button class="btn btn--confirm" (click)="openDialog()">
+            CONFIRMAR RESGATE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="dialog">
+  <div class="dialog--good-cenary" *ngIf="!isErrorRow">
+    <h2 mat-dialog-title>Resgate efetuado com sucesso!</h2>
+    <button class="btn btn--success" (click)="onClose()">NOVO RESGATE</button>
+  </div>
+  <div class="bad-cenary">
+    <div mat-dialog-content *ngIf="isErrorRow">
+      <h2 mat-dialog-title>DADOS INVÁLIDOS!</h2>
+      <div
+        class="error-rows"
+        *ngFor="let row of invalidFildList; let i = index;"
+      >
+        <span *ngIf="!row && !!actionList.length"
+          ><b>{{actionList[i].nome}}:</b> O valor a resgatar não pode ser maior
+          que {{calculePercentual(actionList[i].percentual, totalBalance) |
+          currency : "BRL"}}
+        </span>
+      </div>
+      <div class="btn-group">
+        <button id="btnClose" class="btn btn--success" (click)="onClose()">
+          CORRIGIR
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+.custom-ransom {
+  font-size: 11px;
+  .investment-date {
+    .investment-date__title {
+      font-weight: 400;
+    }
+
+    &__info__text {
+      display: flex;
+      width: 100%;
+    }
+
+    &-content {
+      display: flex;
+      row-gap: 10px;
+      flex-direction: column;
+
+    }
+  }
+
+  .ransom {
+    font-size: 11px;
+
+    &__title {
+      font-weight: 400;
+    }
+
+    &__group {
+      row-gap: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__table {
+      width: 100%;
+
+      &__title {
+        text-align: left;
+      }
+    }
+  }
+}
+
+
+.mensagem__erro {
+  display: flex;
+  font-size: 12px;
+  margin-left: 5px;
+  color: red;
+  max-width: 150px;
+  width: 100%;
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: right;
+  column-gap: 10px;
+}
+
+.btn {
+  padding: 8px 24px;
+  font-size: 11px;
+  color: white;
+  border-radius: 4px;
+  border-width: 0px;
+
+  cursor: pointer;
+
+  &--cancel {
+    background-color: #a7a3a3;
+  }
+
+  &--confirm {
+    background-color: #2472ff;
+  }
+}

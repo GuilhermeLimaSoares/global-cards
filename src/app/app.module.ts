@@ -3,16 +3,50 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InvestmentListComponent } from './src/pages/investment-list/investment-list.component';
+import { CustomRansomComponent } from './src/pages/custom-ransom/custom-ransom.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { InvestmentsService } from './src/services/investments.service';
+import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { investmentReducer } from './src/store/reducers/investmentReducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DialogComponent } from './src/components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InvestmentListComponent,
+    CustomRansomComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatTableModule,
+    MatInputModule,
+    MatGridListModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    ReactiveFormsModule, //formularios reativos,
+    CommonModule,
+    StoreModule.forRoot({
+      investment: investmentReducer
+      })
   ],
-  providers: [],
+  providers: [InvestmentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
