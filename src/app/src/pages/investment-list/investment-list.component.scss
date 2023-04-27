@@ -1,5 +1,26 @@
-.investment-list-content{
-  .invest-ment-list__title {
+.investment-list {
+  font-size: 11px;
+
+  .investment-list__title {
     font-weight: 400;
+  }
+
+  &-table {
+    font-size: 11px;
+  }
+
+  &-column-name {
+    font-size: 11px;
+  }
+
+  &-table-row {
+    td {
+      font-size: 10px;
+
+      &:first-child{
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 }
