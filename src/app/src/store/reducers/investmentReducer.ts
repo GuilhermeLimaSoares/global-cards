@@ -1,6 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
 import { investment } from '../actions/investment.actions';
-import { ActionModel } from '../models/action.model';
 
 const initialState = {
   acoes: [{

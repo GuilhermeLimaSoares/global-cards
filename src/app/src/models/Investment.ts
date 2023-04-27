@@ -10,5 +10,5 @@ export interface InvestmentData {
 
 export interface InvestmentResponse {
   response: InvestmentData;
-  status: string;
+  status?: string;
 }

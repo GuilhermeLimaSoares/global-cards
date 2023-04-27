@@ -92,7 +92,7 @@ export class CustomRansomComponent implements OnInit, DoCheck {
       data: {
         invalidFildList: this.invalidFildList,
         actionList: this.dataTable,
-        totalBalance: this.initialState?.saldoTotal
+        totalBalance: this.initialState.saldoTotal
       },
     });
   }
