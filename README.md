@@ -16,3 +16,6 @@ O Teste consiste em criar uma mini aplicação em angular 13+ que simula um resg
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## Prodution server
+URL: https://global-cards-a9ee2.web.app/lista-investimentos
+
