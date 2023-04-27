@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Actions } from '../../models/actions';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog.component';
 
 const ELEMENT_DATA: Actions[] = [
@@ -26,12 +26,11 @@ const ELEMENT_DATA: Actions[] = [
   styleUrls: ['./custom-ransom.component.scss'],
 })
 export class CustomRansomComponent implements OnInit, DoCheck {
-  animal: string = '';
-  name: string = '';
+  totalBalance: number = 0;
+  invalidFildList: boolean[] = [true, true, true, true];
+  balanceList: number[] = [];
   resgate = {};
   displayedColumns: string[] = ['AÇÂO', 'SALDO ACUMULADO', 'RESGATAR'];
-  columnsToDisplay: string[] = this.displayedColumns.slice();
-  dataSource: Actions[] = ELEMENT_DATA;
   currentinvestment$: Observable<any>;
   dataTable: Actions[] = [];
   initialState = {
@@ -59,7 +58,7 @@ export class CustomRansomComponent implements OnInit, DoCheck {
   }
 
   ngDoCheck(): void {
-    console.log('ngDoCheck - this.formulario:', this.form.controls);
+    this.totalBalance = this.sumTotalBalance(this.balanceList);
   }
 
   ngOnInit(): void {
@@ -84,31 +83,36 @@ export class CustomRansomComponent implements OnInit, DoCheck {
     this.form = this.formBuilder.group(this.resgate);
   }
 
-  confirm() {
-    console.log('current:', this.form);
-    if (this.form.valid) {
-      console.log('this.formulario.valid:', this.form.valid);
-    }
-  }
-
   getValidator(listValidators: any = {}, index: number) {
     return listValidators[index];
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: {name: this.name, animal: this.animal},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      data: {
+        invalidFildList: this.invalidFildList,
+        totalBalance: this.totalBalance,
+      },
     });
   }
 
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialog.closeAll();
   }
 
-}
+  setInvalidField(isValid: boolean, index: number): void {
+    this.invalidFildList[index] = isValid;
+  }
 
+  updateBalanceList(value: number, index: number): void {
+    this.balanceList[index] = value;
+  }
+
+  sumTotalBalance(list: number[]): number {
+    const initialValue = 0;
+    return list.reduce(
+      (acc: number, currentValue: number) => acc + currentValue,
+      initialValue
+    );
+  }
+}

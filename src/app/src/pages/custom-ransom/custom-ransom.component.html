@@ -47,6 +47,13 @@
                     type="number"
                     [formControlName]="i"
                     placeholder="Digite quanto quer resgatar"
+                    (keyup)="
+                      setInvalidField(
+                        form.controls[i]?.value < row.percentual,
+                        i
+                      );
+                      updateBalanceList(form.controls[i]?.value, i)
+                    "
                   />
                   <div
                     class="mensagem__erro"
@@ -62,13 +69,17 @@
         </mat-card>
         <mat-card class="total-ransom">
           <mat-card-content>
-            <span><b>Valor total do resgate:</b> R$ 15.000,00</span>
+            <span><b>Valor total do resgate:</b> {{ totalBalance }}</span>
           </mat-card-content>
         </mat-card>
 
         <div class="btn-group">
-          <button class="btn btn--cancel" (click)="onNoClick()">CANCELAR</button>
-          <button class="btn btn--confirm" (click)="openDialog()">CONFIRMAR RESGATE</button>
+          <button class="btn btn--cancel" (click)="closeDialog()">
+            CANCELAR
+          </button>
+          <button class="btn btn--confirm" (click)="openDialog()">
+            CONFIRMAR RESGATE
+          </button>
         </div>
       </div>
     </div>
