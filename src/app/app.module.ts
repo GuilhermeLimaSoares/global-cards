@@ -17,12 +17,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { investmentReducer } from './src/store/reducers/investmentReducer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DialogComponent } from './src/components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvestmentListComponent,
-    CustomRansomComponent
+    CustomRansomComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule, //formularios reativos,
+    CommonModule,
     StoreModule.forRoot({
       investment: investmentReducer
       })

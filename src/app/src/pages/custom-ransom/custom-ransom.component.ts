@@ -91,7 +91,8 @@ export class CustomRansomComponent implements OnInit, DoCheck {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         invalidFildList: this.invalidFildList,
-        totalBalance: this.totalBalance,
+        actionList: this.dataTable,
+        totalBalance: this.initialState?.saldoTotal
       },
     });
   }
