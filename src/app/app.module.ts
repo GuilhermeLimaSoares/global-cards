@@ -12,6 +12,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InvestmentsService } from './src/services/investments.service';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
@@ -37,6 +38,7 @@ import { DialogComponent } from './src/components/dialog/dialog.component';
     MatGridListModule,
     MatDialogModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     ReactiveFormsModule, //formularios reativos,
     CommonModule,

@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { of } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 describe('InvestmentListComponent', () => {
   let component: InvestmentListComponent;
@@ -37,6 +38,7 @@ describe('InvestmentListComponent', () => {
         MatButtonModule,
         HttpClientTestingModule,
         RouterTestingModule,
+        MatProgressSpinnerModule,
         StoreModule.forRoot({ investment: investmentReducer })],
       providers: [InvestmentsService, HttpClient, {
         provide: InvestmentsService,

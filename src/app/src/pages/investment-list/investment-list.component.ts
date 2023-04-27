@@ -21,6 +21,7 @@ const ELEMENT_DATA: InvestmentList[] = [
   styleUrls: ['./investment-list.component.scss'],
 })
 export class InvestmentListComponent implements OnInit {
+  isVisibleLoader: boolean = true;
   displayedColumns: string[] = ['nome', 'objetivo', 'saldoTotal'];
   dataSource: InvestmentList[] = ELEMENT_DATA;
   selectedInvestment: InvestmentList = {
@@ -46,6 +47,9 @@ export class InvestmentListComponent implements OnInit {
   ngOnInit(): void {
     this.service.listInvestments().subscribe((data) => {
       this.dataSource = data?.response?.data?.listaInvestimentos;
+      this.isVisibleLoader = false;
+    }, error => {
+      this.isVisibleLoader = false;
     });
   }
 
