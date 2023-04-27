@@ -18,7 +18,7 @@
     <!-- Saldo Total Column -->
     <ng-container matColumnDef="saldoTotal">
       <th mat-header-cell *matHeaderCellDef> SALDO TOTAL </th>
-      <td mat-cell *matCellDef="let element"> {{element.saldoTotal}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.saldoTotal | currency : 'BRL'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

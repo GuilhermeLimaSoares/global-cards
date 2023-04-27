@@ -17,7 +17,7 @@
             </mat-grid-tile>
             <mat-grid-tile class="investment-date__info">
               <span class="investment-date__info__text">{{
-                initialState.saldoTotal
+                initialState.saldoTotal | currency : "BRL"
               }}</span>
             </mat-grid-tile>
           </mat-grid-list>
@@ -41,7 +41,12 @@
               </tr>
               <tr *ngFor="let row of dataTable; let i = index">
                 <td>{{ row?.nome }}</td>
-                <td>{{ row?.percentual }}</td>
+                <td>
+                  {{
+                    calculePercentual(row.percentual, initialState.saldoTotal)
+                      | currency : "BRL"
+                  }}
+                </td>
                 <td>
                   <input
                     type="number"
@@ -49,7 +54,11 @@
                     placeholder="Digite quanto quer resgatar"
                     (keyup)="
                       setInvalidField(
-                        form.controls[i]?.value < row.percentual,
+                        form.controls[i]?.value <
+                          calculePercentual(
+                            row.percentual,
+                            initialState.saldoTotal
+                          ),
                         i
                       );
                       updateBalanceList(form.controls[i]?.value, i)
@@ -57,10 +66,16 @@
                   />
                   <div
                     class="mensagem__erro"
-                    *ngIf="form.controls[i]?.value > row.percentual"
+                    *ngIf="
+                      form.controls[i]?.value >
+                      calculePercentual(row.percentual, initialState.saldoTotal)
+                    "
                   >
                     O valor a resgatar não pode ser maior que R$
-                    {{ row?.percentual }}
+                    {{
+                      calculePercentual(row.percentual, initialState.saldoTotal)
+                        | currency : "BRL"
+                    }}
                   </div>
                 </td>
               </tr>
@@ -69,7 +84,10 @@
         </mat-card>
         <mat-card class="total-ransom">
           <mat-card-content>
-            <span><b>Valor total do resgate:</b> {{ totalBalance }}</span>
+            <span
+              ><b>Valor total do resgate:</b>
+              {{ totalBalance | currency : "BRL" }}</span
+            >
           </mat-card-content>
         </mat-card>
 
