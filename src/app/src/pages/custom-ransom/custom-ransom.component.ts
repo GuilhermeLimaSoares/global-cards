@@ -78,6 +78,8 @@ export class CustomRansomComponent implements OnInit, DoCheck {
       );
 
       this.resgate = Object.assign({}, listRescue);
+    }, error => {
+      alert(error);
     });
 
     this.form = this.formBuilder.group(this.resgate);

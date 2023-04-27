@@ -50,6 +50,7 @@ export class InvestmentListComponent implements OnInit {
       this.isVisibleLoader = false;
     }, error => {
       this.isVisibleLoader = false;
+      alert(error);
     });
   }
 
