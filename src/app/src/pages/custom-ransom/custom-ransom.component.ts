@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { InvestmentList } from '../../models/investment-list';
@@ -9,6 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Actions } from '../../models/actions';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogComponent } from './dialog.component';
 
 const ELEMENT_DATA: Actions[] = [
   {
@@ -24,6 +26,8 @@ const ELEMENT_DATA: Actions[] = [
   styleUrls: ['./custom-ransom.component.scss'],
 })
 export class CustomRansomComponent implements OnInit, DoCheck {
+  animal: string = '';
+  name: string = '';
   resgate = {};
   displayedColumns: string[] = ['AÇÂO', 'SALDO ACUMULADO', 'RESGATAR'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
@@ -48,16 +52,14 @@ export class CustomRansomComponent implements OnInit, DoCheck {
 
   constructor(
     private store: Store<{ investment: InvestmentList }>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) {
     this.currentinvestment$ = store.select('investment');
   }
 
   ngDoCheck(): void {
-    console.log(
-      'ngDoCheck - this.formulario:',
-      this.form.controls
-    );
+    console.log('ngDoCheck - this.formulario:', this.form.controls);
   }
 
   ngOnInit(): void {
@@ -92,4 +94,21 @@ export class CustomRansomComponent implements OnInit, DoCheck {
   getValidator(listValidators: any = {}, index: number) {
     return listValidators[index];
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {name: this.name, animal: this.animal},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  onNoClick(): void {
+    this.dialog.closeAll();
+  }
+
 }
+
